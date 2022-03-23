@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 import { Persona } from 'src/app/Modelo/persona';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -27,7 +29,12 @@ export class EditComponent implements OnInit {
     this.service.updatePersona(persona)
       .subscribe(data => {
         this.persona = data;
-        alert("Se Actualizo con Exito...!!!");
+        //alert("Se Actualizo con Exito...!!!");
+        Swal.fire(
+          'Buen trabajo!',
+          'Se actualizo con éxito...!!!',
+          'success'
+        )
         this.router.navigate(["listar"]);
       })
   }

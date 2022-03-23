@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 import { Persona } from 'src/app/Modelo/persona';
-//import {Swal} from 'sweetalert';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add',
@@ -19,13 +19,13 @@ export class AddComponent implements OnInit {
   Guardar() {
     this.service.createPersona(this.persona)
       .subscribe(data => {
-        alert("Se Agrego con Exito...!!!");
+        //alert("Se Agrego con Exito...!!!");
+        Swal.fire(
+          'Buen trabajo!',
+          'Se registro con éxito!',
+          'success'
+        )
         this.router.navigate(["listar"]);
       })
   }
 }
-/*Swal.fire(
-'Good job!',
-'You clicked the button!',
-'success'
-)*/
